@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Library Management|Home</title>
+        <link href="styling.css" type = "text/css" rel = "stylesheet">
+    </head>
+    <h1 class = "green_text">Library Management</h1>
+    <div>
+      <form action = "authorPage.html" formtarget="_self">
+        <button class = "green_background white_text">Authors</button>
+      </form>
+      <form action = "publisherPage.html" formtarget="_self">
+        <button class = "green_background white_text">Publishers</button>
+      </form>
+    </div>
+    <table id = "tableBooks" class = "table_styling">
+      <tr class = "green_background">
+        <th>Book Name</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>  
+    </table>
+    <form action = "add_book.html" formtarget="_self">
+      <button class = "white_background" type = "submit" >Add new Book!</button>    
+    </form>
+    <script src = "jsHomePage.js"></script>
+</html>

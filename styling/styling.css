@@ -1,0 +1,25 @@
+.green_text{
+    color : green;
+}
+
+.white_text{
+    color : white;
+}
+.green_background{
+    background-color: green;
+}
+.input_width{
+    width: 100%;
+    margin-top: 20px;
+}
+.margin_top_right{
+    margin-top: 20px;
+    margin-right: 10px;
+}
+.table_styling{
+    width: 100%;
+    margin-top: 30px;
+}
+.white_background{
+    background-color: white;
+}
