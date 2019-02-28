@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Add Book</title>
-        <link href="styling.css" type = "text/css" rel = "stylesheet">
+        <link href="../styling/styling.css" type = "text/css" rel = "stylesheet">
     </head>
     <body>
         <h1 class = "green_text">Lirary Management System</h1>
@@ -14,9 +14,8 @@
             <input placeholder="mm/dd/yyyy" class= "input_width" name = "date" type = "text">
             <button type ="button" onclick="submitted(this.form)" class = "margin_top_right">Submit</button>
         </form>
-        <form action = "Home_page.html" formtarget = "_self">
-          <button type = "submit">Go back</button>
-        </form>
+        <a href = "../Home_page.html"><button>Go back</button></a>
         <script src = "data_base_management.js"></script>
+        
     </body>
 </html>

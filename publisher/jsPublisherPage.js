@@ -1,70 +1,74 @@
 (function publisherTableManagement() {
   
-    let publisherNumbers = publisherList();
-    debugger
-    let myTable = document.getElementById("tablePublishers");
-    let tableLength = myTable.childNodes.length-2;
-    let publishers = Object.keys(publisherNumbers);
-    let len = publishers.length;
-    if(tableLength!=len) {
-      let row = ""; 
-      let t = "";
-      let z = "";
-      let b = "";
-      for(let k=0; k<len; k++){
-        row = document.createElement("tr");
-        myTable.appendChild(row);
-          
-        z = document.createElement("TD");
-        t = document.createTextNode(publishers[k]);
-        z.appendChild(t);
-        row.appendChild(z);
-                
-        z = document.createElement("TD");
-        t = document.createTextNode(publisherNumbers[publishers[k]]);
-        z.appendChild(t);
-        row.appendChild(z);
-          
-        z = document.createElement("TD");
-        b = document.createElement("span");
-        b.innerHTML = '<button id="'+ publishers[k] +'" onclick = "deletePublisher(this.id)"/>delete</button>';
-        z.appendChild(b);
-        row.appendChild(z);
-          
-      }
-  
+  let publisherNumbers = JSON.parse(localStorage.getItem("Publishers"));
+  debugger
+  let myTable = document.getElementById("tablePublishers");
+  let tableLength = myTable.childNodes.length-2;
+  let len = publisherNumbers.length;
+  if(tableLength!=len) {
+    let row = ""; 
+    let text = "";
+    let tdata = "";
+    let button = "";
+    for(let k=0; k<len; k++){
+      row = document.createElement("tr");
+      myTable.appendChild(row);
+      let publisher = Object.keys(publisherNumbers[k]);  
+      tdata = document.createElement("TD");
+      text = document.createTextNode(publisher);
+      tdata.appendChild(text);
+      row.appendChild(tdata);
+              
+      tdata = document.createElement("TD");
+      text = document.createTextNode(publisherNumbers[k][publisher]);
+      tdata.appendChild(text);
+      row.appendChild(tdata);
+        
+      tdata = document.createElement("TD");
+      button = document.createElement("span");
+      button.innerHTML = '<button onclick = "deletePublisher(\'' + publisherNumbers[k] + '\')">delete</button>';
+      tdata.appendChild(button);
+      row.appendChild(tdata);
+        
     }
-  })();
-  
-  function publisherList() {
-    let publisherNumbers = {};
-    let storage = localStorage;
-    for(let k=0; k<storage.length; k++){
-      let book = localStorage.key(k);
-      let data = JSON.parse(storage[book]);
-      if(publisherNumbers.hasOwnProperty(data["Publisher"])) {
-        publisherNumbers[data["Publisher"]]++; 
-      } else{
-        publisherNumbers[data["Publisher"]] = 1;
-      }
-  
-    }
-    return publisherNumbers;
+
   }
+})();
   
-  function deletePublisher(publisherId){
-    debugger
-    console.log(publisherId)
-    let storage = localStorage;
-    let book = "";
-    let data = "";
-    for(let k=0; k<storage.length; k++){
-      book = localStorage.key(k);
-      data = JSON.parse(localStorage.getItem(book));
-      if(publisherId==data["Publisher"]) {
-        localStorage.removeItem(book);
-        k--;
-      }
+function deletePublisher(publisherId){
+  debugger
+  
+  let books = JSON.parse(localStorage.getItem("books"));
+  let authors = JSON.parse(localStorage.getItem("Authors"));
+  let publishers = JSON.parse(localStorage.getItem("Publishers"));
+  
+  for(let k=0; k<publishers.length; k++) {
+    if(publishers[k].hasOwnProperty(publisherId)) {
+      publishers.splice(k,1);
+      break;
     }
-    location.reload();
   }
+  for (let k = 0; k < books.length; k++) {
+    if (books[k]['Publisher'] == publisherId) {
+      let author = books[k]['Author'];
+      for(let k=0; k<authors.length; k++) {
+        if(authors[k].hasOwnProperty(author)) {
+          if(authors[k][author]>1) {
+            let newAuthor = {};
+            newAuthor[author] = authors[k][author]-1;
+            authors.splice(k,1,newAuthor);
+            break;
+          } else{
+            authors.splice(k,1);
+            break;
+          }
+        }
+      }
+      books.splice(k,1);
+    }
+  }
+  localStorage.setItem("Authors",JSON.stringify(authors));
+  localStorage.setItem("books",JSON.stringify(books));
+  localStorage.setItem("Publishers",JSON.stringify(publishers));
+  location.reload();
+}
