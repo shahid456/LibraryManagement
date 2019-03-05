@@ -35,7 +35,7 @@ function submitted(form) {
       }
       bookData = JSON.stringify(bookData);
       localStorage.setItem("books", bookData);
-      debugger
+  
       //Author's Data base Management
       let authorData = JSON.parse(localStorage.getItem("Authors"));
 

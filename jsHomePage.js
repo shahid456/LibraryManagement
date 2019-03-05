@@ -1,6 +1,6 @@
 
 (function table() {
-  debugger
+  
   let bookData = JSON.parse(localStorage.getItem('books'));
   let len = bookData.length;
   let myTable = document.getElementById("tableBooks");
@@ -43,7 +43,7 @@
       row.appendChild(tdata);
 
       let button1 = document.createElement("span");
-      button1.innerHTML = '<button onclick="updateButton(\'' + bookData[k]["book"] + '\')">update</button>';
+      button1.innerHTML = '<button class = "margin_left" onclick="updateButton(\'' + bookData[k]["book"] + '\')">update</button>';
       tdata.appendChild(button1);
       row.appendChild(tdata);
     }
@@ -51,7 +51,7 @@
 })();
 
 function deleteBook(bookId) {
-  debugger
+
   let books = JSON.parse(localStorage.getItem("books"));
   let authors = JSON.parse(localStorage.getItem("Authors"));
   let publishers = JSON.parse(localStorage.getItem("Publishers"));
@@ -98,6 +98,6 @@ function deleteBook(bookId) {
 }
 
 function updateButton(book) {
-  location.href = 'update/updateBook.html';
+  location.href = 'update/updateBook.html?book=' + book;
 }
 

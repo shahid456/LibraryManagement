@@ -37,8 +37,6 @@
 })();
 
 function deleteAuthor(authorId){
-  debugger
-  
   let books = JSON.parse(localStorage.getItem("books"));
   let authors = JSON.parse(localStorage.getItem("Authors"));
   let publishers = JSON.parse(localStorage.getItem("Publishers"));

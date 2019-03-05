@@ -16,6 +16,9 @@
     margin-top: 20px;
     margin-right: 10px;
 }
+.margin_left{
+    margin-left: 40px;
+}
 .table_styling{
     width: 100%;
     margin-top: 30px;
@@ -23,3 +26,61 @@
 .white_background{
     background-color: white;
 }
+
+.navBar {
+    display: flex;
+    align-content: space-around;
+    background-color: aliceblue;
+}
+table#tableBooks th {
+    color: white;
+    background-color: green;
+}
+table#tableBooks tr:nth-child(even) {
+    background-color: #eee;
+    text-align: center;
+  }
+
+table#tableBooks tr:nth-child(odd) {
+    background-color: #fff;
+    text-align: center;
+}
+
+table#tableAuthors th {
+    color: white;
+    background-color: green;
+}
+table#tableAuthors tr:nth-child(even) {
+    background-color: #eee;
+    text-align: center;
+  }
+
+table#tableAuthors tr:nth-child(odd) {
+    background-color: #fff;
+    text-align: center;
+}
+
+table#tableAuthors{
+    padding: 40px;
+ 
+}
+
+table#tablePublishers th {
+    color: white;
+    background-color: green;
+}
+table#tablePublishers tr:nth-child(even) {
+    background-color: #eee;
+    text-align: center;
+  }
+
+table#tablePublishers tr:nth-child(odd) {
+    background-color: #fff;
+    text-align: center;
+}
+
+table#tablePublishers{
+    padding: 40px;
+ 
+}
+

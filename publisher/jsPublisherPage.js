@@ -1,7 +1,6 @@
 (function publisherTableManagement() {
   
   let publisherNumbers = JSON.parse(localStorage.getItem("Publishers"));
-  debugger
   let myTable = document.getElementById("tablePublishers");
   let tableLength = myTable.childNodes.length-2;
   let len = publisherNumbers.length;
@@ -26,7 +25,7 @@
         
       tdata = document.createElement("TD");
       button = document.createElement("span");
-      button.innerHTML = '<button onclick = "deletePublisher(\'' + publisherNumbers[k] + '\')">delete</button>';
+      button.innerHTML = '<button onclick = "deletePublisher(\'' + publisher + '\')">delete</button>';
       tdata.appendChild(button);
       row.appendChild(tdata);
         
@@ -36,8 +35,6 @@
 })();
   
 function deletePublisher(publisherId){
-  debugger
-  
   let books = JSON.parse(localStorage.getItem("books"));
   let authors = JSON.parse(localStorage.getItem("Authors"));
   let publishers = JSON.parse(localStorage.getItem("Publishers"));
